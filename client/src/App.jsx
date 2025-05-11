@@ -4,21 +4,13 @@ import { Routes, Route, Navigate, useLocation, Router } from "react-router-dom";
 import {Home  } from "./pages";
 import { Header, Footer, RequireAuth, PersistAuth } from "./components";
 import "./App.css";
+
+
+import { AddBlog,SingleBlog, Settings, UserProfile , About , NotFoundPage , Auth } from "./pages";
 import { darkModeSelector } from "./app/darkModeSlice";
 import { userDataSelector } from "./app/authSlice";
 import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
-import Suspenser from "./components/Suspenser";
-
-
-const AddBlog = lazy(() => import("./pages/AddBlog"))
-const SingleBlog = lazy(() => import("./pages/SingleBlog"))
-const Settings = lazy(() => import("./pages/Settings"))
-const UserProfile = lazy(() => import("./pages/UserProfile"))
-const About = lazy(() => import("./pages/About"))
-const NotFoundPage = lazy(() => import("./pages/NotFoundPage"))
-const Auth = lazy(() => import("./pages/Auth"))
-
 
 
 function App() {
@@ -40,12 +32,12 @@ function App() {
               <Route path="/*" element={<NotFoundPage />} />
                 <Route element={<PersistAuth />}>
                   <Route element={<RequireAuth />}>
-                    <Route element={<Suspenser/>} >
+                    
                       <Route path="/add_blog" element={<AddBlog />} />
                       <Route path="/single_blog/:id" element={<SingleBlog />} />
                       <Route path="/settings" element={<Settings />} />
                       <Route path="/user_profile/:id" element={<UserProfile />} />
-                     </Route>
+                    
                 </Route>
                 <Route path="/about" element={<About />} />
               </Route>
