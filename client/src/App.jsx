@@ -38,14 +38,14 @@ function App() {
               <Route path="/" element={<Home />} />
               {!userData && <Route path="/auth" element={<Auth />} />}
               <Route path="/*" element={<NotFoundPage />} />
-              <Route element={<Suspenser/>} >
-                  <Route element={<PersistAuth />}>
-                    <Route element={<RequireAuth />}>
+                <Route element={<PersistAuth />}>
+                  <Route element={<RequireAuth />}>
+                    <Route element={<Suspenser/>} >
                       <Route path="/add_blog" element={<AddBlog />} />
                       <Route path="/single_blog/:id" element={<SingleBlog />} />
                       <Route path="/settings" element={<Settings />} />
                       <Route path="/user_profile/:id" element={<UserProfile />} />
-                    </Route>
+                     </Route>
                 </Route>
                 <Route path="/about" element={<About />} />
               </Route>
